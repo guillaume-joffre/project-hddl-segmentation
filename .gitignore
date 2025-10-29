@@ -1,0 +1,62 @@
+# ----- Python -----------------------
+__pycache__/
+
+# ----- Build/Generated --------------
+build/
+dist/
+
+# ----- Env --------------------------
+.env
+.venv
+venv/
+env/
+.conda/
+conda-meta/
+
+# Keep 
+!environment.yml
+!conda-*.lock
+
+# ----- Data/Weights -----------------
+data/
+datasets/
+inputs/
+outputs/
+checkpoints/
+runs/
+logs/
+wandb/
+tensorboard/
+results/
+models/
+*.ckpt
+
+# ----- Archives ---------------------
+archives/
+dev/
+private/
+
+# ----- Notebooks --------------------
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+*.jupyterlab-settings
+
+.marimo/
+*.marimo-cache/
+.marimo-cache/
+.marimo_history.json
+.marimo_history/
+*.marimo-tmp/
+.marimo-tmp/
+!*.marimo.html 
+
+# ----- Junk -------------------------
+.DS_Store
+Thumbs.db
+tmp/
+temp/
+
+.vscode/
+
+# ----- Keep Files -------------------
+!environment.yml

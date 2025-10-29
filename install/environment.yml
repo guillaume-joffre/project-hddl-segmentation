@@ -1,0 +1,39 @@
+name: HDDL1
+channels:
+  - pytorch
+  - nvidia         # optional, for CUDA builds
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - setuptools
+  - wheel
+
+  # Core PyTorch + CUDA (omit cudatoolkit for CPU-only installs)
+  - pytorch=2.5.1
+  - torchvision=0.20.1
+  - torchaudio=2.5.1
+  - pytorch-cuda=12.1  # comment this line out for CPU-only users
+
+  # Core scientific stack
+  - numpy=1.26
+  - scipy
+  - scikit-image
+  - scikit-learn
+  - marimo
+  - pandas
+  - matplotlib
+  - tqdm
+  - pillow
+
+  # Deep learning and segmentation toolkits
+  - pip:
+      - segmentation-models-pytorch==0.3.3       # U-Net, Attention U-Net, DeepLabV3, etc.
+      - albumentations==1.4.13                   # data augmentation
+      - opencv-python==4.10.0.84
+      - monai==1.4.0                             # advanced medical/attention UNets
+      - torchmetrics==1.4.1
+      - pytorch-lightning==2.4.0
+      - tensorboard==2.18.0
+      - tqdm==4.66.4
