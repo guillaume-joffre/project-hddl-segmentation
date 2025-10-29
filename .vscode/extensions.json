@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "marimo-team.vscode-marimo",
+        "ms-python.python",
+        "rodolphebarbanneau.python-docstring-highlighter",
+        "kevinrose.vsc-python-indent"
+    ]
+}

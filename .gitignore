@@ -56,7 +56,10 @@ Thumbs.db
 tmp/
 temp/
 
-.vscode/
+*.requirements.txt
+
+# ----- IDE --------------------------
+.vscode/settings.json
 
 # ----- Keep Files -------------------
 !environment.yml
