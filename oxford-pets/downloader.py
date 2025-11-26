@@ -19,7 +19,7 @@ def download_dataset():
         raise FileNotFoundError("Please launch this function from the root project folder !")
 
     # ----- Creating the data directory ---------------
-    data_dir = cwd / "data"
+    data_dir = cwd / "data/oxford-pets"
     data_dir.mkdir(exist_ok=True)
     
     # ----- Downloading and extracting ----------------
@@ -28,7 +28,7 @@ def download_dataset():
         extract_dir = data_dir / file.removesuffix('.tar.gz')
 
         if extract_dir.exists():
-            print(f"dataset déjà présent dans: ./data/{file.removesuffix('.tar.gz')}")
+            print(f"dataset déjà présent dans: ./data/oxford-pets/{file.removesuffix('.tar.gz')}")
             continue
         
         if tar_file.exists():
