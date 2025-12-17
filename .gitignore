@@ -49,6 +49,7 @@ private/
 *.marimo-tmp/
 .marimo-tmp/
 !*.marimo.html 
+__marimo__
 
 # ----- Junk -------------------------
 .DS_Store

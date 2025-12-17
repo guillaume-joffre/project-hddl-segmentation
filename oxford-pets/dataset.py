@@ -58,7 +58,8 @@ class OxfordPetsDataset(Dataset):
         fetch_bboxes: bool = False,         # whether or not to fetch the bounding box
         fetch_masks: bool = False,          # whether or not to fetch the segmentation mask
         joint_transform: A.Compose = default_base_transform(),  # albumentation transform for image/bbox/mask
-        dataset_root = Path("./data/oxford-pets")
+        dataset_root = Path("./data/oxford-pets"),
+        identifiers = None
     ): 
         dataset_root = Path(dataset_root).resolve()
 
@@ -72,7 +73,11 @@ class OxfordPetsDataset(Dataset):
         self.joint_transform = joint_transform
         
         # data lists
-        self.identifiers = self.get_identifiers() # the list of images in the Dataset
+        if identifiers is None:
+            self.identifiers = self.get_identifiers() # the list of images in the Dataset
+        else:
+            self.identifiers = pd.Series(sorted(identifiers), name="identifier")
+        
         self.animals = pd.Categorical( self.identifiers.str[0].str.islower().astype(int).map({0: "cat", 1: "dog"}) )
         self.races = pd.Categorical( self.identifiers.str.rpartition("_")[0].str.lower() )
 
