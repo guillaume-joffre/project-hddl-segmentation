@@ -21,7 +21,7 @@ class OxfordPetsDataset(Dataset):
     """
       
     @staticmethod
-    def default_transform() -> A.Compose:
+    def default_base_transform() -> A.Compose:
         """
         The default transform that will be applied.
         Bounding boxes are expected in pascal_voc format [xmin, ymin, xmax, ymax].
@@ -41,7 +41,7 @@ class OxfordPetsDataset(Dataset):
             ),
             ToTensorV2()
         ], bbox_params=A.BboxParams(format="pascal_voc")) # xmin ymin xmax ymax
-      
+
       
     @staticmethod
     def default_transform_unnormalize(image):
@@ -57,8 +57,8 @@ class OxfordPetsDataset(Dataset):
     def __init__(self, 
         fetch_bboxes: bool = False,         # whether or not to fetch the bounding box
         fetch_masks: bool = False,          # whether or not to fetch the segmentation mask
-        joint_transform: A.Compose = default_transform(),  # albumentation transform for image/bbox/mask
-        dataset_root: os.PathLike = Path("./data/oxford-pets")
+        joint_transform: A.Compose = default_base_transform(),  # albumentation transform for image/bbox/mask
+        dataset_root = Path("./data/oxford-pets")
     ): 
         dataset_root = Path(dataset_root).resolve()
 
@@ -71,6 +71,7 @@ class OxfordPetsDataset(Dataset):
         
         self.joint_transform = joint_transform
         
+        # data lists
         self.identifiers = self.get_identifiers() # the list of images in the Dataset
         self.animals = pd.Categorical( self.identifiers.str[0].str.islower().astype(int).map({0: "cat", 1: "dog"}) )
         self.races = pd.Categorical( self.identifiers.str.rpartition("_")[0].str.lower() )
@@ -187,8 +188,8 @@ class OxfordPetsDataset(Dataset):
             exists = paths.apply(os.path.exists)
             dataframe.loc[~exists, col] = pd.NA
     
-        dataframe.index.name = "index"
-        return dataframe
+        # dataframe.index.name = "index"
+        return dataframe #.reset_index()
     
         
 # run with: python oxford-pets/dataset.py on the conda (HDDL.1) env
@@ -241,5 +242,4 @@ if __name__ == "__main__":
     fig.subplots_adjust(hspace=0.05)
     fig.tight_layout()
     plt.show()
-
 
