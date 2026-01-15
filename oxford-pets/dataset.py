@@ -40,7 +40,7 @@ class OxfordPetsDataset(Dataset):
                 std=[0.229, 0.224, 0.225]
             ),
             ToTensorV2()
-        ], bbox_params=A.BboxParams(format="pascal_voc")) # xmin ymin xmax ymax
+        ], bbox_params=A.BboxParams(format="pascal_voc", label_fields=[])) # xmin ymin xmax ymax
 
       
     @staticmethod
@@ -89,10 +89,17 @@ class OxfordPetsDataset(Dataset):
     def __getitem__(self, idx):
         identifier = self.identifiers[idx]
         
+        
         components = {"image": self.get_image(identifier)}
-        components["bboxes"] = [self.get_bbox(identifier)] if self.fetch_bboxes else []
-        if self.fetch_masks: components["mask"] = self.get_mask(identifier)
+        
+        if self.fetch_bboxes:
+            bbox = self.get_bbox(identifier)
+            components["bboxes"] = [bbox] 
 
+        if self.fetch_masks: 
+            components["mask"] = self.get_mask(identifier)
+            
+        
         transformed = self.joint_transform(**components)
 
         outputs = {
@@ -210,7 +217,7 @@ if __name__ == "__main__":
 
     for idx in range(5):
 
-        img = unnormalize(images[idx])
+        img = OxfordPetsDataset.default_transform_unnormalize(images[idx])
         
         # ax1: image
         ax1 = axes[0][idx]

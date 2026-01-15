@@ -29,6 +29,7 @@ wandb/
 tensorboard/
 results/
 models/
+**/weights/
 *.ckpt
 
 # ----- Archives ---------------------

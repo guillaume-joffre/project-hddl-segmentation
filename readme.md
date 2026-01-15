@@ -7,7 +7,7 @@ Puis activez l'env avec:
 > conda activate HDDL.1
 
 Enfin rendez l'environnement visible pour marimo/jupyter avec:
-> python -m ipykernel install --user --name HDDL.1 --display-name "HDDL.1 Segmentation"
+> python -m ipykernel install --user --name HDDL.1 --display-name "HDDL.1"
 
 Si vous avez pas un GPU nvidia vous aurez pas cuda et ce 
 sera plus lent mais au pire on se débrouillera comme ça

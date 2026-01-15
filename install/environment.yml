@@ -17,6 +17,7 @@ dependencies:
     - torchaudio==2.9.0
     - torchvision==0.24.0
     - torchsummary==1.5.1
+    - torchinfo==1.8.0
 
     - numpy==2.3.4
     - scikit-learn
