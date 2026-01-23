@@ -1,5 +1,8 @@
 # Projets d'HDDL
 
+projets du groupe 13: 
+REBOT Emerick, FONSECA-GOMES Pedro, HEYDON Tristan, JOFFRE Guillaume
+
 Les trois mini-projets d'hddl sont diponibles dans les dossiers correspondants, avec:
 - mini-project-1: Chien/Chats (classification et segmentation)
 - mini-project-2: Conditional VAE
