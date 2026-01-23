@@ -80,6 +80,6 @@ def download_dataset():
         remove_archive(archive)
         
 
-### Run from root with: python oxford-pets/downloader.py
+### Run from root with: python mini-project-1/downloader.py
 if __name__ == "__main__":
     download_dataset()

@@ -204,7 +204,7 @@ class OxfordPetsDataset(Dataset):
         return dataframe #.reset_index()
     
         
-# run with: python oxford-pets/dataset.py on the conda (HDDL.1) env
+# run with: python mini-project-1/dataset.py on the conda (HDDL.1) env
 if __name__ == "__main__":
     
     import matplotlib.pyplot as plt
